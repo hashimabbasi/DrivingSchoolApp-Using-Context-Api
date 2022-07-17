@@ -148,6 +148,29 @@ const Home = () => {
           <CustomCard />
         </ScrollView>
       </View>
+      <View>
+        <TouchableOpacity style={styles.button}>
+        <View
+                style={{
+                  width: "100%",
+                  marginBottom: 5,
+                }}
+              >
+                <Text
+                  style={{
+                    backgroundColor: "yellow",
+                    fontSize: 16,
+                    fontWeight: "bold",
+                    paddingVertical: 5,
+                    paddingHorizontal: 5,
+                    borderRadius: 5,
+                  }}
+                >
+                  Naplánovať novú jazdu
+                </Text>
+              </View>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -176,16 +199,15 @@ const styles = StyleSheet.create({
     elevation: 3,
     marginVertical: 10,
   },
-  card1: {
-    backgroundColor: "white",
-    paddingHorizontal: 5,
-    paddingVertical: 10,
-    marginBottom: 10,
+  button: {
+    justifyContent:'center',
+    width:'100%',
+    backgroundColor: "#03045E",
+    paddingRight:185,
+    paddingLeft:20,
+    marginTop: 10,
+    paddingVertical:50,
     borderRadius: 15,
-  },
-  background: {
-    width: 339,
-    height: 131,
   },
 });
 export default Home;
