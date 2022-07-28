@@ -30,7 +30,7 @@ const Input = (props) => {
     </View>
   );
 };
-const Login = () => {
+const Login = ({navigation}) => {
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -51,7 +51,8 @@ const Login = () => {
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}
+>
             <Text style={{ fontSize: 18, color: "white", fontWeight: "400" }}>
               Prihlásiť sa
             </Text>
@@ -87,7 +88,7 @@ const Login = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 50,
+    paddingTop:50,
     backgroundColor: "#fff",
     justifyContent: "flex-start",
   },

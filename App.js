@@ -1,12 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Login from './Screens/login';
-import Card from './Screens/home';
+import Home from './Screens/home';
+import Navigation from './navigation/navigation';
 export default function App () {
   return (
-    <View style={styles.container}>
-      <Card/>
-    </View>
+      <Navigation />
   );
 }
 
