@@ -13,12 +13,10 @@ import CustomCard from "../Components/CustomCard";
 import { SafeAreaView } from "react-native-safe-area-context";
 const BookingScreen = () => {
   return (
-    <Fragment>
-    <SafeAreaView style={{ flex: 0, backgroundColor: "white" }} />
     <View style={styles.container}>
         <Calendar />
+        <Text>asdasd</Text>
     </View>
-    </Fragment>
   );
 };
 const styles = StyleSheet.create({

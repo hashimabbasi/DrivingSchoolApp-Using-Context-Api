@@ -40,30 +40,48 @@ const Calendar = () => {
     Roboto_700Bold,
     Roboto_900Black,
   });
-  const Today= ()=>{
+  const Today = () => {
     const date = new Date();
     const day = date.getDate();
-    return day
+    return day;
+  };
+  function makeid(length) {
+    var result = "";
+    var characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
   }
   const [DatesArray, setDatesArray] = useState([]);
   const [selected, setselected] = useState(Today());
-  console.log(selected);
   const data = useMemo(() => {
     var date = new Date();
+    var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    let numberOfDays = lastDay.getDate();
     const arrday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     let data = [];
+    var Day = date.getDay();
+    var DATE = date.getDate();
     for (let i = 0, j = 0; i <= 6; i++, j++) {
-      var check = date.getDate() + j;
-      data.push({
-        key: i,
-        date: date.getDate() + i,
-        day: arrday[date.getDay() + j],
-      });
-      if (check >= 6) {
-        j = -2;
+      if (Day + j > 6) {
+        Day = 0;
+        j = 0;
       }
+      if (numberOfDays < DATE + i) {
+        DATE = 1;
+        i = 0;
+      }
+      data.push({
+        key: makeid(6),
+        date: DATE + i,
+        day: arrday[Day + j],
+      });
     }
     setDatesArray(data);
+    console.log(data);
     return data;
   }, []);
   if (!fontsLoaded) {
@@ -122,7 +140,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white",
-    paddingVertical: 20,
+    paddingVertical: 10,
   },
   unselected: {
     width: ITEM_WIDTH,
