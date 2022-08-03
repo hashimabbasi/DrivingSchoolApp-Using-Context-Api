@@ -57,20 +57,22 @@ const Calendar = () => {
   }
   const [DatesArray, setDatesArray] = useState([]);
   const [selected, setselected] = useState(Today());
+  var date = new Date();
+  var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+  const [Monthdays, setMonthDays] = useState(lastDay.getDate());
   const data = useMemo(() => {
     var date = new Date();
-    var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-    let numberOfDays = lastDay.getDate();
     const arrday = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     let data = [];
     var Day = date.getDay();
     var DATE = date.getDate();
+    var count = 0;
     for (let i = 0, j = 0; i <= 6; i++, j++) {
       if (Day + j > 6) {
         Day = 0;
         j = 0;
       }
-      if (numberOfDays < DATE + i) {
+      if (Monthdays < DATE + i) {
         DATE = 1;
         i = 0;
       }
@@ -79,11 +81,14 @@ const Calendar = () => {
         date: DATE + i,
         day: arrday[Day + j],
       });
+      count++;
+      if (count > 6) {
+        break;
+      }
     }
     setDatesArray(data);
-    console.log(data);
     return data;
-  }, []);
+  }, [selected, Monthdays]);
   if (!fontsLoaded) {
     return <AppLoading />;
   } else {
