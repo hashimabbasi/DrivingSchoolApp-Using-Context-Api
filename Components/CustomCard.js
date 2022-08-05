@@ -11,7 +11,28 @@ import {
   import avatar from "../assets/avatar.png";
   import clock from "../assets/clock.png";
   import calendar from "../assets/calendar.png";
+  import AppLoading from "expo-app-loading";
+import {
+  useFonts,
+  Roboto_100Thin,
+  Roboto_300Light,
+  Roboto_400Regular,
+  Roboto_500Medium,
+  Roboto_700Bold,
+  Roboto_900Black,
+} from "@expo-google-fonts/roboto";
 const CustomCard = () => {
+  let [fontsLoaded] = useFonts({
+    Roboto_100Thin,
+    Roboto_300Light,
+    Roboto_400Regular,
+    Roboto_500Medium,
+    Roboto_700Bold,
+    Roboto_900Black,
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
     return (
       <View>
         <ScrollView>
@@ -24,6 +45,7 @@ const CustomCard = () => {
                 marginBottom: 10,
                 borderStyle: "dashed",
                 borderColor: "#797D83",
+                justifyContent: "space-between",
               }}
             >
               <View style={{ paddingRight: 50 }}>
@@ -116,6 +138,7 @@ const CustomCard = () => {
         </ScrollView>
       </View>
     );
+                }
   };
   const styles = StyleSheet.create({
     container: {

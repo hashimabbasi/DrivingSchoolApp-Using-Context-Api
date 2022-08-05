@@ -15,11 +15,24 @@ import {
   Roboto_700Bold,
   Roboto_900Black,
 } from "@expo-google-fonts/roboto";
+import AppLoading from "expo-app-loading";
 import Zarf from "../assets/ZARF.png";
 import Notification from "../assets/Notification.png";
 import Call from "../assets/Call.png";
 const Header = () => {
+  let [fontsLoaded] = useFonts({
+    Roboto_100Thin,
+    Roboto_300Light,
+    Roboto_400Regular,
+    Roboto_500Medium,
+    Roboto_700Bold,
+    Roboto_900Black,
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
   return (
+    <View style={{ overflow: 'hidden'}}>
     <View style={{ elevation: 6, backgroundColor: "white", marginBottom: 10 }}>
       <View style={styles.header}>
         <View>
@@ -34,20 +47,10 @@ const Header = () => {
           </TouchableOpacity>
         </View>
       </View>
-      <View
-        style={{
-          backgroundColor: "white",
-          paddingHorizontal: 10,
-          paddingBottom: 20,
-          width: Dimensions.get("window").width,
-        }}
-      >
-        <Text style={{ fontSize: 27, fontFamily: "Roboto_700Bold" }}>
-          Ahoj, študent!
-        </Text>
-      </View>
+    </View>
     </View>
   );
+      }
 };
 const styles = StyleSheet.create({
   header: {
@@ -57,6 +60,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     paddingVertical: 25,
     paddingHorizontal: 15,
+    width: Dimensions.get("window").width,
   },
 });
 export default Header;

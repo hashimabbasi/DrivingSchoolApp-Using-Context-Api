@@ -8,7 +8,7 @@ const navigation=()=> {
   return (
     <NavigationContainer>
     <Drawer.Navigator >
-    <Drawer.Screen name="Calendar" component={Calendar} />
+    <Drawer.Screen name="Calendar" component={Calendar} options={{headerShown:false,}} />
       {/* <Drawer.Screen name="Login" component={Login}  options={{headerShown: false,  drawerItemStyle: { display: 'none' }}}/> */}
       {/* <Drawer.Screen name="Home" component={Home}  options={{headerShown:false,}}/> */}
     </Drawer.Navigator>

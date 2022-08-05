@@ -127,7 +127,7 @@ const Calendar = () => {
             );
           }}
           contentContainerStyle={[
-            { paddingBottom: 16, paddingLeft: 8, paddingRight: 0 },
+            { paddingBottom: 20, paddingLeft: 8, paddingRight: 0 },
           ]}
           getItemLayout={(_, index) => ({
             length: ITEM_WIDTH,
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white",
-    paddingVertical: 10,
+    paddingTop:10,
   },
   unselected: {
     width: ITEM_WIDTH,

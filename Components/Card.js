@@ -17,6 +17,17 @@ import {
 } from "@expo-google-fonts/roboto";
 import CustomCard from "./CustomCard";
 const Card = () => {
+  let [fontsLoaded] = useFonts({
+    Roboto_100Thin,
+    Roboto_300Light,
+    Roboto_400Regular,
+    Roboto_500Medium,
+    Roboto_700Bold,
+    Roboto_900Black,
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
   return (
     <View>
       <View
@@ -81,6 +92,7 @@ const Card = () => {
       </View>
     </View>
   );
+        }
 };
 const styles = StyleSheet.create({
   container: {
