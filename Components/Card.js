@@ -1,10 +1,5 @@
 import { useState, Fragment } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-} from "react-native";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
 import AppLoading from "expo-app-loading";
 import {
   useFonts,
@@ -28,71 +23,71 @@ const Card = () => {
   if (!fontsLoaded) {
     return <AppLoading />;
   } else {
-  return (
-    <View>
-      <View
-        style={{
-          flexDirection: "row",
-          alignSelf: "stretch",
-          justifyContent: "space-between",
-          paddingHorizontal: 15,
-          paddingVertical: 10,
-        }}
-      >
-        <Text style={{ fontSize: 20, fontFamily: "Roboto_900Black" }}>
-          Tvoje jazdy
-        </Text>
-        <Text
+    return (
+      <View>
+        <View
           style={{
-            fontSize: 13,
-            color: "#48CAE4",
-            fontFamily: "Roboto_500Medium",
+            flexDirection: "row",
+            alignSelf: "stretch",
+            justifyContent: "space-between",
+            paddingHorizontal: 15,
+            paddingVertical: 10,
           }}
         >
-          Zobraziť všetky
-        </Text>
-      </View>
-      <View style={{ flexDirection: "row" }}>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <CustomCard />
-          <CustomCard />
-          <CustomCard />
-          <CustomCard />
-        </ScrollView>
-      </View>
-      <View
-        style={{
-          flexDirection: "row",
-          alignSelf: "stretch",
-          justifyContent: "space-between",
-          paddingHorizontal: 15,
-          paddingVertical: 10,
-        }}
-      >
-        <Text style={{ fontSize: 20, fontFamily: "Roboto_900Black" }}>
-          Tvoje teórie
-        </Text>
-        <Text
+          <Text style={{ fontSize: 20, fontFamily: "Roboto_900Black" }}>
+            Tvoje jazdy
+          </Text>
+          <Text
+            style={{
+              fontSize: 13,
+              color: "#48CAE4",
+              fontFamily: "Roboto_500Medium",
+            }}
+          >
+            Zobraziť všetky
+          </Text>
+        </View>
+        <View style={{ flexDirection: "row" }}>
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            <CustomCard type="NAPLÁNOVANÉ" />
+            <CustomCard type="NAPLÁNOVANÉ" />
+            <CustomCard type="NAPLÁNOVANÉ" />
+            <CustomCard type="NAPLÁNOVANÉ" />
+          </ScrollView>
+        </View>
+        <View
           style={{
-            fontSize: 13,
-            color: "#48CAE4",
-            fontFamily: "Roboto_500Medium",
+            flexDirection: "row",
+            alignSelf: "stretch",
+            justifyContent: "space-between",
+            paddingHorizontal: 15,
+            paddingVertical: 10,
           }}
         >
-          Zobraziť všetky
-        </Text>
+          <Text style={{ fontSize: 20, fontFamily: "Roboto_900Black" }}>
+            Tvoje teórie
+          </Text>
+          <Text
+            style={{
+              fontSize: 13,
+              color: "#48CAE4",
+              fontFamily: "Roboto_500Medium",
+            }}
+          >
+            Zobraziť všetky
+          </Text>
+        </View>
+        <View style={{ flexDirection: "row" }}>
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            <CustomCard type="NAPLÁNOVANÉ" />
+            <CustomCard type="NAPLÁNOVANÉ" />
+            <CustomCard type="NAPLÁNOVANÉ" />
+            <CustomCard type="NAPLÁNOVANÉ" />
+          </ScrollView>
+        </View>
       </View>
-      <View style={{ flexDirection: "row" }}>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <CustomCard />
-          <CustomCard />
-          <CustomCard />
-          <CustomCard />
-        </ScrollView>
-      </View>
-    </View>
-  );
-        }
+    );
+  }
 };
 const styles = StyleSheet.create({
   container: {

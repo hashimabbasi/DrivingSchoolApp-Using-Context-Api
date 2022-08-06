@@ -21,7 +21,7 @@ import {
   Roboto_700Bold,
   Roboto_900Black,
 } from "@expo-google-fonts/roboto";
-const CustomCard = () => {
+const CustomCard = (props) => {
   let [fontsLoaded] = useFonts({
     Roboto_100Thin,
     Roboto_300Light,
@@ -68,7 +68,7 @@ const CustomCard = () => {
                       fontFamily: "Roboto_500Medium",
                     }}
                   >
-                    NAPLÁNOVANÉ
+                   {props.type}
                   </Text>
                 </View>
                 <View style={{ flexDirection: "row" }}>

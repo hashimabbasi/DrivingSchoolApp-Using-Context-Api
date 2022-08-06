@@ -5,17 +5,51 @@ import {
   StyleSheet,
   Text,
   Pressable,
+  ScrollView,
 } from "react-native";
 import { useState, Fragment } from "react";
 import AppLoading from "expo-app-loading";
 import Calendar from "../Components/Calendar";
 import CustomCard from "../Components/CustomCard";
-import Header from "../Components/header";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useFonts, Roboto_700Bold } from "@expo-google-fonts/roboto";
-const BookingScreen = () => {
+import {
+  useFonts,
+  Roboto_700Bold,
+  Roboto_500Medium,
+  Roboto_900Black,
+} from "@expo-google-fonts/roboto";
+const ListHeader = () => {
+    return(
+        <View
+        style={{
+          flexDirection: "row",
+          alignSelf: "stretch",
+          justifyContent: "space-between",
+          paddingHorizontal: 15,
+          paddingVertical: 10,
+        }}
+      >
+        <Text style={{ fontSize: 20, fontFamily: "Roboto_900Black" }}>
+          Najbližšie voľné jazdy
+        </Text>
+        <Text
+          style={{
+            fontSize: 13,
+            paddingTop: 5,
+            color: "#48CAE4",
+            fontFamily: "Roboto_500Medium",
+          }}
+        >
+          Zobraziť všetky
+        </Text>
+      </View>
+    )
+}
+const SchoolPlanner = () => {
   let [fontsLoaded] = useFonts({
     Roboto_700Bold,
+    Roboto_500Medium,
+    Roboto_900Black,
   });
   const dummyArray = [
     {
@@ -46,7 +80,6 @@ const BookingScreen = () => {
       <Fragment>
         <SafeAreaView style={{ flex: 0, backgroundColor: "white" }} />
         <View style={styles.container}>
-          <Header />
           <Calendar />
           <View
             style={{
@@ -56,17 +89,8 @@ const BookingScreen = () => {
               backgroundColor: "#F3F4F5",
             }}
           >
-            <View
-              style={{
-                paddingHorizontal: 12,
-                paddingVertical: 10,
-              }}
-            >
-              <Text style={{ fontSize: 20, fontFamily: "Roboto_700Bold" }}>
-                Tvoje jazdy
-              </Text>
-            </View>
             <FlatList
+            ListHeaderComponent={ListHeader}
               data={dummyArray}
               keyExtractor={(item) => item.id.toString()}
               showsVerticalScrollIndicator={false}
@@ -92,4 +116,4 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
-export default BookingScreen;
+export default SchoolPlanner;

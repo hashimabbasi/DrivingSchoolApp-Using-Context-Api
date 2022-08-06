@@ -3,10 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
   TouchableOpacity,
-  ImageBackground,
-  Dimensions,
   ScrollView,
 } from "react-native";
 import AppLoading from "expo-app-loading";
