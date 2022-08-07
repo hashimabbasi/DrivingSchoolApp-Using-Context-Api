@@ -65,7 +65,7 @@ const Login = ({navigation}) => {
             }}
           >
             <Text style={{ fontSize: 15 }}>Ešte nie si naším študentom? </Text>
-            <TouchableOpacity style={{}}>
+            <TouchableOpacity >
               <Text
                 style={{
                   color: "#03045E",
@@ -116,12 +116,12 @@ const styles = StyleSheet.create({
   button: {
     alignSelf: "center",
     backgroundColor: "#03045E",
-    paddingTop: 15,
-    paddingBottom: 15,
-    paddingLeft: 130,
-    paddingRight: 130,
+    paddingVertical:15,
+    justifyContent: "center",
     marginTop: 10,
     borderRadius: 15,
+    width: "100%",
+    alignItems: "center",
   },
 });
 export default Login;

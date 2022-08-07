@@ -11,6 +11,7 @@ import { useState, Fragment } from "react";
 import AppLoading from "expo-app-loading";
 import Calendar from "../Components/Calendar";
 import CustomCard from "../Components/CustomCard";
+import ModalView from "../Components/Modal";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
   useFonts,
@@ -19,32 +20,32 @@ import {
   Roboto_900Black,
 } from "@expo-google-fonts/roboto";
 const ListHeader = () => {
-    return(
-        <View
+  return (
+    <View
+      style={{
+        flexDirection: "row",
+        alignSelf: "stretch",
+        justifyContent: "space-between",
+        paddingHorizontal: 15,
+        paddingVertical: 10,
+      }}
+    >
+      <Text style={{ fontSize: 20, fontFamily: "Roboto_900Black" }}>
+        Najbližšie voľné jazdy
+      </Text>
+      <Text
         style={{
-          flexDirection: "row",
-          alignSelf: "stretch",
-          justifyContent: "space-between",
-          paddingHorizontal: 15,
-          paddingVertical: 10,
+          fontSize: 13,
+          paddingTop: 5,
+          color: "#48CAE4",
+          fontFamily: "Roboto_500Medium",
         }}
       >
-        <Text style={{ fontSize: 20, fontFamily: "Roboto_900Black" }}>
-          Najbližšie voľné jazdy
-        </Text>
-        <Text
-          style={{
-            fontSize: 13,
-            paddingTop: 5,
-            color: "#48CAE4",
-            fontFamily: "Roboto_500Medium",
-          }}
-        >
-          Zobraziť všetky
-        </Text>
-      </View>
-    )
-}
+        Zobraziť všetky
+      </Text>
+    </View>
+  );
+};
 const SchoolPlanner = () => {
   let [fontsLoaded] = useFonts({
     Roboto_700Bold,
@@ -90,7 +91,7 @@ const SchoolPlanner = () => {
             }}
           >
             <FlatList
-            ListHeaderComponent={ListHeader}
+              ListHeaderComponent={ListHeader}
               data={dummyArray}
               keyExtractor={(item) => item.id.toString()}
               showsVerticalScrollIndicator={false}
