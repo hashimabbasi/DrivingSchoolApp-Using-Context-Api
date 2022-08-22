@@ -7,6 +7,8 @@ import {
   Image,
   Button,
 } from "react-native";
+import { useContext } from "react";
+import { ModalContext } from "../Context/Booking";
 import { Avatar } from "react-native-elements";
 import {
   useFonts,
@@ -17,13 +19,14 @@ import {
   Roboto_700Bold,
   Roboto_900Black,
 } from "@expo-google-fonts/roboto";
-import { useState, Fragment, useEffect } from "react";
 import modalCar from "../assets/modalCar.png";
 import BackArrow from "../assets/back-arrow.png";
 import ModalAvatar from "../assets/modalAvatar.png";
 import calendarModal from "../assets/calendarModal.png";
 import clockModal from "../assets/clockModal.png";
-const ModalView = (props) => {
+const ModalView = () => {
+  const { ModalVisible, setModalVisible } = useContext(ModalContext);
+  console.log(ModalVisible);
   let [] = useFonts({
     Roboto_100Thin,
     Roboto_300Light,
@@ -32,17 +35,12 @@ const ModalView = (props) => {
     Roboto_700Bold,
     Roboto_900Black,
   });
-  // useEffect(() => {
-  //   setModalVisible(props.displayModal);
-  //   console.log("asdasd " + props.displayModal);
-  // }, [ModalVisible]);
-  const [ModalVisible, setModalVisible] = useState(props.displayModal);
   return (
     <View>
       <Modal animationType="fade" transparent={true} visible={ModalVisible}>
         <View style={styles.modalView}>
           <View style={styles.modalHeader}>
-            <TouchableOpacity onPress={() => setModalVisible(false)}>
+            <TouchableOpacity onPress={() => {setModalVisible(false)}}>
               <Image source={BackArrow} style={styles.backArrow} />
             </TouchableOpacity>
           </View>
@@ -89,7 +87,7 @@ const ModalView = (props) => {
               </View>
             </View>
           </View>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={()=>setModalVisible(false)}>
             <Text style={{ fontSize: 18, color: "white", fontWeight: "400" }}>
               Prihlásiť sa na jazdu
             </Text>

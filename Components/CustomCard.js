@@ -1,19 +1,11 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
-import { useState, Fragment, useEffect} from "react";
+import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
+import { useState, Fragment, useEffect } from "react";
 import { Avatar } from "react-native-elements";
 import Car from "../assets/Car.png";
 import avatar from "../assets/avatar.png";
 import clock from "../assets/clock.png";
 import calendar from "../assets/calendar.png";
 import AppLoading from "expo-app-loading";
-import ModalView from "../Components/Modal";
 import {
   useFonts,
   Roboto_100Thin,
@@ -23,10 +15,8 @@ import {
   Roboto_700Bold,
   Roboto_900Black,
 } from "@expo-google-fonts/roboto";
-import { Modal } from "react-native-web";
-const CustomCard = (props) => {   
-  const [displayModal, setdisplayModal] = useState(true);
-  console.log("dislay is   "+displayModal)
+//modal opens when user clicks on the custom card
+const CustomCard = (props) => {
   let [fontsLoaded] = useFonts({
     Roboto_100Thin,
     Roboto_300Light,
@@ -41,13 +31,7 @@ const CustomCard = (props) => {
     return (
       <View>
         <ScrollView>
-          <TouchableOpacity
-            style={styles.card}
-            onPress={() => {
-              setdisplayModal(true)
-           
-            }}
-          >
+          <View style={styles.card}>
             <View
               style={{
                 flexDirection: "row",
@@ -145,7 +129,7 @@ const CustomCard = (props) => {
                 </Text>
               </View>
             </View>
-          </TouchableOpacity>
+          </View>
         </ScrollView>
       </View>
     );

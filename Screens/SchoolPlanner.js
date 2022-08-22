@@ -5,14 +5,14 @@ import {
   StyleSheet,
   Text,
   Pressable,
-  ScrollView,
 } from "react-native";
-import { useState, Fragment } from "react";
+import { useState, Fragment, useEffect } from "react";
 import AppLoading from "expo-app-loading";
 import Calendar from "../Components/Calendar";
 import CustomCard from "../Components/CustomCard";
 import ModalView from "../Components/Modal";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { ModalContext } from "../Context/Booking";
 import {
   useFonts,
   Roboto_700Bold,
@@ -47,6 +47,7 @@ const ListHeader = () => {
   );
 };
 const SchoolPlanner = () => {
+  const [ModalVisible, setModalVisible] = useState(false);
   let [fontsLoaded] = useFonts({
     Roboto_700Bold,
     Roboto_500Medium,
@@ -79,6 +80,7 @@ const SchoolPlanner = () => {
   } else {
     return (
       <Fragment>
+         <ModalContext.Provider value={{ModalVisible, setModalVisible}}>
         <SafeAreaView style={{ flex: 0, backgroundColor: "white" }} />
         <View style={styles.container}>
           <Calendar />
@@ -98,13 +100,23 @@ const SchoolPlanner = () => {
               renderItem={({ item }) => {
                 return (
                   <View>
-                    <CustomCard type={item.type} />
+                    <Pressable
+                      onPressIn={() => {
+                        setModalVisible(true);
+                      }}
+                    >
+                      <CustomCard type={item.type} />
+                    </Pressable>
                   </View>
                 );
               }}
             />
           </View>
+         {
+            ModalVisible ? <ModalView /> : null
+         }
         </View>
+        </ModalContext.Provider>
       </Fragment>
     );
   }
